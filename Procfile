@@ -1,1 +1,1 @@
-web: gunicorn dayspring.wsgi
+web: gunicorn wsgi
