@@ -15,4 +15,6 @@ class Member(models.Model):
     def __unicode__(self):
         return self.first_name + ' ' + self.last_name
     
+    def day_of_birth(self):
+        return "%s/%s" % (self.birth_month, self.birth_day)
     
