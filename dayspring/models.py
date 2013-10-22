@@ -60,5 +60,5 @@ class Event(models.Model):
         return "%s on %s" % (self.event_type, str(self.date))
     
     def absences_count(self):
-        return len(self.absences)
+        return len(self.absences.all())
     
