@@ -12,7 +12,7 @@ class PieceAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
     search_fields = ['title']
     list_display = ('title', 'audio_version_url', 'youtube_version_url', 'display_soloists')
-    ordering = ('title')
+    ordering = ('title',)
 
 class EventAdmin(admin.ModelAdmin):
     list_filter = ('event_type')
