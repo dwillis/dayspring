@@ -15,7 +15,7 @@ class PieceAdmin(admin.ModelAdmin):
     ordering = ('title',)
 
 class EventAdmin(admin.ModelAdmin):
-    list_filter = ('event_type')
+    list_filter = ('event_type',)
     list_display = ('date', 'time', 'event_type', 'report_time', 'absences_count')
     ordering = ('-date', 'time')
     
