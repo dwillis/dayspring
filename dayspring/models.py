@@ -40,7 +40,7 @@ class Piece(models.Model):
     slug = models.SlugField(max_length=75)
     audio_version_url = models.URLField(null=True, blank=True)
     youtube_version_url = models.URLField(null=True, blank=True)
-    soloists = models.ManyToManyField(Member)
+    soloists = models.ManyToManyField(Member, null=True, blank=True)
 
     def __unicode__(self):
         return self.title
@@ -50,11 +50,11 @@ class Piece(models.Model):
 
 class Event(models.Model):
     date = models.DateField()
-    time = models.TimeField()
+    time = models.TimeField(null=True, blank=True)
     event_type = models.CharField(max_length=1, choices=EVENT_CHOICES)
-    report_time = models.TimeField()
-    absences = models.ManyToManyField(Member)
-    pieces = models.ManyToManyField(Piece)
+    report_time = models.TimeField(null=True, blank=True)
+    absences = models.ManyToManyField(Member, null=True, blank=True)
+    pieces = models.ManyToManyField(Piece, null=True, blank=True)
     
     def __unicode__(self):
         return "%s on %s" % (self.event_type, str(self.date))
