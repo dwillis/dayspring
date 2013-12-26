@@ -1,5 +1,5 @@
 from django.contrib import admin
-from dayspring.models import Member, Piece, Event
+from dayspring.models import Member, Piece, Attendance
 
 class MemberAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("first_name","last_name")}
@@ -14,11 +14,10 @@ class PieceAdmin(admin.ModelAdmin):
     list_display = ('title', 'audio_version_url', 'youtube_version_url', 'display_soloists')
     ordering = ('title',)
 
-class EventAdmin(admin.ModelAdmin):
-    list_filter = ('event_type',)
-    list_display = ('date', 'time', 'event_type', 'report_time', 'absences_count')
-    ordering = ('-date', 'time')
+class AttendanceAdmin(admin.ModelAdmin):
+    list_filter = ('occurrence',)
+    list_display = ('__unicode__', 'all_absences')
     
 admin.site.register(Member, MemberAdmin)
 admin.site.register(Piece, PieceAdmin)
-admin.site.register(Event, EventAdmin)
+admin.site.register(Attendance, AttendanceAdmin)

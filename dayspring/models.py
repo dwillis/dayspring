@@ -1,7 +1,9 @@
 from django.db import models
 from localflavor.us.models import USStateField, PhoneNumberField
+from swingtime import models as swingtime
 import calendar
 import datetime
+import swingtime_settings
 
 MONTH_CHOICES = tuple((m, m) for m in calendar.month_abbr[1:])
 PART_CHOICES = (
@@ -48,16 +50,16 @@ class Piece(models.Model):
     def display_soloists(self):
         return ", ".join([x.name for x in self.soloists.all()])
 
-class Event(models.Model):
-    date = models.DateField()
-    time = models.TimeField(null=True, blank=True)
-    event_type = models.CharField(max_length=1, choices=EVENT_CHOICES)
-    report_time = models.TimeField(null=True, blank=True)
+class Attendance(models.Model):
+    occurrence = models.ForeignKey(swingtime.Occurrence)
     absences = models.ManyToManyField(Member, null=True, blank=True)
     pieces = models.ManyToManyField(Piece, null=True, blank=True)
     
     def __unicode__(self):
-        return "%s on %s" % (self.event_type, str(self.date))
+        return "%s on %s" % (self.occurrence.title, self.occurrence.start_time.strftime("%B %d, %Y"))
+    
+    def all_absences(self):
+        return ", ".join([x.__unicode__() for x in self.absences.all()])
     
     def absences_count(self):
         return len(self.absences.all())
