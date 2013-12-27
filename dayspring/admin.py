@@ -17,7 +17,7 @@ class PieceAdmin(admin.ModelAdmin):
 
 class AttendanceAdmin(admin.ModelAdmin):
     list_filter = ('occurrence',)
-    list_display = ('__unicode__', 'all_absences')
+    list_display = ('__unicode__', 'absences_count', 'all_absences')
 
 def occurrence_unicode(self):
     return u'%s: %s' % (self.title, self.start_time.strftime("%b %d, %Y"))

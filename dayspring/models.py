@@ -12,10 +12,6 @@ PART_CHOICES = (
     (u'T', u'Tenor'),
     (u'B', u'Bass')
 )
-EVENT_CHOICES = (
-    (u'R', 'Rehearsal'),
-    (u'S', 'Service')
-)
 
 class Member(models.Model):
     last_name = models.CharField(max_length=255)
@@ -35,8 +31,7 @@ class Member(models.Model):
     
     def day_of_birth(self):
         return "%s %s" % (self.birth_month, self.birth_day)
-
-
+    
 class Piece(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=75)
