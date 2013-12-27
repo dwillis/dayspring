@@ -59,3 +59,6 @@ class Attendance(models.Model):
     def absences_count(self):
         return len(self.absences.all())
     
+    def event_type(self):
+        return self.occurrence.event.event_type
+    
