@@ -53,6 +53,9 @@ class Attendance(models.Model):
     def __unicode__(self):
         return "%s on %s" % (self.occurrence.title, self.occurrence.start_time.strftime("%B %d, %Y"))
     
+    def start_time(self):
+        return self.occurrence.start_time.strftime("%I:%M %p")
+    
     def all_absences(self):
         return ", ".join([x.__unicode__() for x in self.absences.all()])
     

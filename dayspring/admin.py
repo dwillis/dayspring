@@ -17,7 +17,7 @@ class PieceAdmin(admin.ModelAdmin):
 
 class AttendanceAdmin(admin.ModelAdmin):
     list_filter = ('occurrence',)
-    list_display = ('__unicode__', 'event_type', 'absences_count', 'all_absences')
+    list_display = ('__unicode__', 'event_type', 'start_time', 'absences_count', 'all_absences')
     filter_horizontal = ('absences','pieces')
     ordering = ('-id',)
 
