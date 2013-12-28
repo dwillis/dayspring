@@ -145,14 +145,10 @@ LOGGING = {
 }
 
 DATABASES = {
-  'default': {
-    'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    'NAME': 'db2jfip3vesi93',
-    'HOST': 'ec2-54-235-192-45.compute-1.amazonaws.com',
-    'PORT': 5432,
-    'USER': 'ubzbzxiqdarelt',
-    'PASSWORD': 'zz6Ffkdl5XfHYGOstjK5e1AMUx'
-  }
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'dayspring.db',
+    }
 }
 
 SITE_ID = 3
